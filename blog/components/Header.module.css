@@ -1,0 +1,11 @@
+.header{
+    width: 100%;
+    height: 80px;
+    background: red;
+}
+.headerInner{
+    max-width: 1280px;
+    height: 100%;
+    margin: auto;
+    background: green;
+}
