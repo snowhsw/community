@@ -13,7 +13,7 @@ async function Detail({params}){
         <div className={styles.PostBox}>
             <div className={styles.postInfo}>
                 <p className={styles.title}>
-                    <sapn className={styles.cate}>{cateKo[result.cate]}</sapn> {result.title}
+                    <span className={styles.cate}>{cateKo[result.cate]}</span> {result.title}
                 </p>
                 <div className={styles.postInfoBot}>
                     <p className={styles.writer}>
