@@ -15,13 +15,13 @@ export async function POST(req) {
 
         const time = `${year}-${mon}-${day} ${hour}:${min}` ;
         
-        console.log(time)
+        // console.log(time)
         const body = await req.json()
         
         const db = ( await connectDB ).db("community")
 
         await db.collection('post').insertOne(
-            {...body, date: time, likeCount: 0, writer: "임시" }
+            {...body, date: time, writer: "임시", view:0, likeCount: 0,}
         )
 
         return NextResponse.json({ redirect: "/" });

@@ -12,7 +12,8 @@ li{
 a{
     text-decoration: none;
 }
-a:visited{
+a:visited,
+a:link{
     color: inherit;
 }
 p{

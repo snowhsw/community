@@ -12,10 +12,7 @@ const DetailLayout = async ({children}) =>{
             {/* 디테일 게시물 */}
             {children}
 
-            {/* 하단 전체 게시글 */}
-            {
-                sortPost.map(post => <Card post={post} key={post._id}/>)
-            }
+            <Card />
         </div>
     )
 }

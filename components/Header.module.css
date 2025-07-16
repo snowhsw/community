@@ -9,8 +9,9 @@
 }
 .logoTxt{
     font-size: 2rem;
-    color: white;
+    color: white !important;
     font-weight: 600;
+
 }
 .headerInner{
     max-width: 1280px;
