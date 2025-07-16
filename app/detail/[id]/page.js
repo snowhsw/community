@@ -1,6 +1,7 @@
 import { connectDB } from "@/app/util/database"
 import { ObjectId } from "mongodb";
 import styles from './page.module.css';
+import cateKo from "@/app/util/category";
 
 async function Detail({params}){
 
@@ -8,14 +9,11 @@ async function Detail({params}){
     const db = ( await connectDB ).db("community");
     const result = await db.collection("post").findOne({ _id: new ObjectId(id)})
 
-    // URL ID값
-    console.log(id)
-
     return(
         <div className={styles.PostBox}>
             <div className={styles.postInfo}>
                 <p className={styles.title}>
-                    <sapn className={styles.cate}>{result.cate}</sapn> {result.title}
+                    <sapn className={styles.cate}>{cateKo[result.cate]}</sapn> {result.title}
                 </p>
                 <div className={styles.postInfoBot}>
                     <p className={styles.writer}>

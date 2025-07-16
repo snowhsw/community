@@ -1,6 +1,8 @@
 import styles from "./PostList.module.css"
 import Link from "next/link";
 import { connectDB } from "@/app/util/database";
+import cateKo from "@/app/util/category";
+
 const PostList = async () => {
 
     //DB 가져오기
@@ -14,7 +16,7 @@ const PostList = async () => {
     const today = new Date()
 
     
-    // 표기되는 작성일 및 카테고리 영문에서 국문으로
+    // 표기되는 작성일
     const formatDate = sortPost.map(post => {
 
         const date = new Date(post.date)
@@ -27,7 +29,6 @@ const PostList = async () => {
         const hour = String(date.getHours()).padStart(2, "0");
         const min = String(date.getMinutes()).padStart(2, "0");
         
-        const cateKo = { question:"질문" ,chat:"잡담" ,info:"정보" ,share:"나눔" ,boast:"자랑" ,adopt:"입양" ,}
 
         const viewDate = isToday? `${hour}:${min}`: `${year}-${mon}-${day}`;
 
