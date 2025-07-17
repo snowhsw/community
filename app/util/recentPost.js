@@ -5,21 +5,23 @@ import { useEffect } from "react"
 const RecentPost = ({post}) =>{
 
     
-    // useEffect(()=>{
+    useEffect(()=>{
         
         const store = localStorage.getItem("recentPost");
         const recent = store ? JSON.parse(store) : [];
         
+        const filter = recent.filter(p => p._id !== post._id)
 
-        console.log(recent)
-
+        const setPost = [post, ...filter]
         
-        localStorage.setItem("recentPost", JSON.stringify([post, ...recent]));
         
+        localStorage.setItem("recentPost", JSON.stringify(setPost));
+        
+        // console.log(setPost)
 
 
-        // localStorage.removeItem("recentPost");
-    // },[post])
+
+    },[post])
 
 
     return null;
