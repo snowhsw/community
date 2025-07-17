@@ -1,15 +1,22 @@
+
+
 import { connectDB } from "@/app/util/database"
 import { ObjectId } from "mongodb";
 import styles from './page.module.css';
 import cateKo from "@/app/util/category";
-
+import RecentPost from "@/app/util/recentPost";
 async function Detail({params}){
 
     const  { id } = await params
     const db = ( await connectDB ).db("community");
     const result = await db.collection("post").findOne({ _id: new ObjectId(id)})
 
+    const propsId = {...result, _id: result._id.toString()}
+
+
     return(
+        <>
+        <RecentPost post={propsId}/>
         <div className={styles.PostBox}>
             <div className={styles.postInfo}>
                 <p className={styles.title}>
@@ -36,7 +43,7 @@ async function Detail({params}){
                 </div>
             </div>
         </div>
-
+        </>
     )
 }
 

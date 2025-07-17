@@ -9,9 +9,9 @@ const Write = () =>{
     const [value, setValue] = useState({title:"", content:"",cate:""});
     const router = useRouter();
 
-    useEffect(()=>{
-        console.log(value)
-    },[value])
+    // useEffect(()=>{
+    //     console.log(value)
+    // },[value])
 
     return(
         <form 
