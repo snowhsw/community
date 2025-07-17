@@ -1,8 +1,8 @@
 .searchWrap{
-    width: 40%;
+    width: 500px;
     border-radius: 10px;
     position: relative;
-    border-radius: 100px;
+    border-radius: 0.5rem;
     overflow: hidden;
 }
 

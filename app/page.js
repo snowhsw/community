@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { connectDB } from "./util/database";
 import PostList from "@/components/PostList";
-import Nav from "@/components/Nav";
+
 
 export default  function Home() {
 
@@ -11,7 +11,6 @@ export default  function Home() {
             {/* 네브바 */}
             <div className={styles.container}>
                 <div className={styles.postBox}>
-                    <Nav/>
                     <PostList/>
                 </div>
                 <div className={styles.stickyBoxOuter}>

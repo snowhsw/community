@@ -1,5 +1,4 @@
-
-import styled from "./Header.module.css"
+import styles from "./Header.module.css"
 import Search from "./Search";
 import Link from "next/link";
 import Btn from "./LogInBtn";
@@ -12,20 +11,20 @@ const Header = async () => {
     console.log(session)
 
     return (
-        <header className={styled.header}>
-            <div className={styled.headerInner}>
+        <header className={styles.header}>
+            <div className={styles.headerInner}>
 
-                <Link href={"/"} className={styled.logoTxt}>
-                    ANIMAL LIFE
+                <Link href={"/"} className={styles.logoTxt}>
+                    COMMUNITY
                 </Link>
                 <Search />
 
-                <div>
+                <div className={styles.userBox}>
                     {
                         !session ?
                             <Btn fn="login" /> :
                             <>
-                                <p>{session.user.name}님 환영합니다</p>
+                                <p>{session.user.name}님</p>
                                 <Btn fn="logout" />
                             </>
                     }

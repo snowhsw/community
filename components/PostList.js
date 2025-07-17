@@ -2,7 +2,7 @@ import styles from "./PostList.module.css"
 import Link from "next/link";
 import { connectDB } from "@/app/util/database";
 import cateKo from "@/app/util/category";
-
+import Nav from "@/components/Nav";
 const PostList = async () => {
 
     //DB 가져오기
@@ -38,14 +38,15 @@ const PostList = async () => {
     
     return (
         <div className={styles.postListContainer}> 
-                <div className={styles.postHead}>
-                    <p className={styles.idx}>번호</p>
-                    <p className={styles.title}>제목</p>
-                    <p className={styles.writer}>작성자</p>
-                    <p className={styles.date}>작성일</p>
-                    <p className={styles.view}>조회수</p>
-                    <p className={styles.likeCount}>추천</p>
-                </div>
+            <Nav/>
+            <div className={styles.postHead}>
+                <p className={styles.idx}>번호</p>
+                <p className={styles.title}>제목</p>
+                <p className={styles.writer}>작성자</p>
+                <p className={styles.date}>작성일</p>
+                <p className={styles.view}>조회수</p>
+                <p className={styles.likeCount}>추천</p>
+            </div>
             {   
                 formatDate.map((post, idx )=>
                     <Link href={`/detail/${post._id}`} className={styles.detailLink} key={post._id}>

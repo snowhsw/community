@@ -2,7 +2,11 @@
 
 import { signIn, signOut } from "next-auth/react"
 import styles from "./LoginBtn.module.css"
+import Link from "next/link"
+import { useState } from "react"
 const Btn = ({ fn }) => {
+
+    const [isManage, setIsManage] = useState(false)
     return (
         <>
             {
@@ -11,14 +15,29 @@ const Btn = ({ fn }) => {
                         className={styles.btn}
                         onClick={() => signIn()}
                     >
-                        로그인
-                    </button>:
-                    <button
-                        className={styles.btn}
-                        onClick={() => signOut()}
-                    >
-                        로그아웃
-                    </button>
+                    </button> :
+                    <>
+                        <button 
+                            className={styles.btn}
+                            onClick={()=>{
+                                setIsManage(!isManage)
+                            }}
+                        >
+                            {
+                                isManage&&
+                                <ul className={styles.userManage}>
+                                    <li>
+                                        <Link href={"/mypage"}>마이페이지</Link>
+                                    </li>
+                                    <li>
+                                        <button onClick={() => signOut({callbackUrl: "/"})}>
+                                            로그아웃
+                                        </button>
+                                    </li>
+                                </ul>
+                            }
+                        </button>
+                    </>
             }
         </>
     )
