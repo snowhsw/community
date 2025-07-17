@@ -1,12 +1,10 @@
 .PostBox{
     width: 100%;
     background-color: white;
-    margin-top: 3rem;
 }
 .postInfo{
     width: 100%;
-    background-color: #ddd;
-    /* padding: 1rem; */
+    background-color: whitesmoke;
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
 }
@@ -17,7 +15,7 @@
 .cate{
     background-color: #42464F;
     color: white;
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem 0.7rem;
     border-radius: 1rem;
     display: inline-block;
     font-size: 0.9rem;

@@ -1,5 +1,3 @@
-
-
 import { connectDB } from "@/app/util/database"
 import { ObjectId } from "mongodb";
 import styles from './page.module.css';

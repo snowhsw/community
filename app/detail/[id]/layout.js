@@ -9,11 +9,7 @@ const DetailLayout = async ({children}) =>{
     // console.log(result)
     return(
         <div className={styles.container}>
-            {
-                //디테일 게시물
-                children
-            }
-            {/*  */}
+            {children}
             <Card />
         </div>
     )

@@ -10,15 +10,12 @@ const RecentPost = ({post}) =>{
         const store = localStorage.getItem("recentPost");
         const recent = store ? JSON.parse(store) : [];
         
-        const filter = recent.filter(p => p._id !== post._id)
+        const filter = recent.filter(p => p._id !== post._id);
 
-        const setPost = [post, ...filter]
+        const setPost = [post, ...filter];
+        const slicePost = setPost.slice(0,5);
         
-        
-        localStorage.setItem("recentPost", JSON.stringify(setPost));
-        
-        // console.log(setPost)
-
+        localStorage.setItem("recentPost", JSON.stringify(slicePost));
 
 
     },[post])
