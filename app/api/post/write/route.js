@@ -27,9 +27,6 @@ export async function POST(req) {
         return NextResponse.json({ redirect: "/" });
     }
 
-    // const body = await req.json()
-
-    // console.log(req.method)
 
 
 }

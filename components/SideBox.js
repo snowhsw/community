@@ -9,7 +9,7 @@ const SideBox = () =>{
 
     const post = useSelector(state => state.recentPost)
 
-    console.log(post)
+    // console.log(post)
 
     return(
         <div className={styles.stickyBoxOuter}>

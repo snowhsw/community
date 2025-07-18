@@ -1,8 +1,11 @@
+// 'use client'
 import styles from "./PostList.module.css"
 import Link from "next/link";
 import { connectDB } from "@/app/util/database";
 import cateKo from "@/app/util/category";
 import Nav from "@/components/Nav";
+
+
 const PostList = async () => {
 
     //DB 가져오기
@@ -16,7 +19,7 @@ const PostList = async () => {
     const today = new Date()
 
     
-    // 표기되는 작성일
+    // 표기되는 작성일 && propsID
     const formatDate = sortPost.map(post => {
 
         const date = new Date(post.date)
@@ -32,9 +35,11 @@ const PostList = async () => {
 
         const viewDate = isToday? `${hour}:${min}`: `${year}-${mon}-${day}`;
 
-        return {...post, date: viewDate, cate: cateKo[post.cate]}
+        return {...post, date: viewDate, cate: cateKo[post.cate], _id: String(post._id)}
         
     })
+
+    
     
     return (
         <div className={styles.postListContainer}> 
