@@ -13,11 +13,38 @@ const recentPostSlice  = createSlice({
         }
     }
 })
-const store = configureStore({
-    reducer:{
-        recentPost : recentPostSlice.reducer
+
+
+const viewCount = createSlice({
+    name: "viewCount",
+    initialState:{},
+    reducers:{
+        viewSyncing(state, action){
+            // console.log(action.payload)
+            return action.payload;
+        }
     }
 })
 
-export const { setRecentPost } = recentPostSlice.actions
+const likeCount = createSlice({
+    name: "likeCount",
+    initialState: {},
+    reducers:{
+        likeSyncing(state, action){
+            // console.log(action.payload)
+            return action.payload
+        }
+    }
+})
+const store = configureStore({
+    reducer:{
+        recentPost : recentPostSlice.reducer,
+        viewCount: viewCount.reducer,
+        likeCount: likeCount.reducer
+    }
+})
+
+export const { setRecentPost } = recentPostSlice.actions;
+export const { viewSyncing } = viewCount.actions;
+export const { likeSyncing } = likeCount.actions;
 export default store;

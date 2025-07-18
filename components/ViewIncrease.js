@@ -1,8 +1,11 @@
 'use client'
 import { useEffect, useState } from "react"
+import { useDispatch} from "react-redux"
+import { viewSyncing } from "@/store/store"
 const ViewIncrease = ({post}) =>{
     // console.log(post.view)
-
+    
+    const dispatch = useDispatch();
     const [count, setCount] = useState(post.view)
 
     useEffect(()=>{
@@ -10,20 +13,19 @@ const ViewIncrease = ({post}) =>{
             {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(post._id)
+                body: JSON.stringify({id: post._id})
             }
         )    
         .then(res => res.json())
-        .then(date => console.log(date))
+        .then(data => {
+            setCount(data.view);
+            dispatch(viewSyncing({id: post._id, view: data.view}));
+        })
         .catch(()=> console.log("error"))
     },[])
     return(
         <>
-            {/* <>asd{post.view}</> */}
             {count}
-            <button onClick={()=>{
-                setCount(count + 1)
-            }}>눌러라</button>
         </>
     )
 }

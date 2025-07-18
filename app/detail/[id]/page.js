@@ -5,7 +5,8 @@ import { ObjectId } from "mongodb";
 import styles from './page.module.css';
 import cateKo from "@/app/util/category";
 import RecentPost from "@/app/util/RecentPost";
-import ViewIncrease from "@/components/viewIncrease";
+import ViewIncrease from "@/components/ViewIncrease";
+import Recommend from "@/components/Recommend";
 async function Detail({ params }) {
 
     const { id } = await params
@@ -18,7 +19,7 @@ async function Detail({ params }) {
     return (
         <>
             <RecentPost post={postOne} />
-            <ViewIncrease post={postOne}/>
+
 
             <div className={styles.PostBox}>
                 <div className={styles.postInfo}>
@@ -31,7 +32,7 @@ async function Detail({ params }) {
                         </p>
                         <div>
                             
-                            <span>조회수{postOne.view}</span> <span>작성일 {postOne.date}</span>
+                            <span>조회수<ViewIncrease post={postOne}/></span> <span>작성일 {postOne.date}</span>
                         </div>
                     </div>
                 </div>
@@ -39,12 +40,7 @@ async function Detail({ params }) {
                     <p className={styles.content}>
                         {postOne.content}
                     </p>
-                    <div className={styles.recommendBox}>
-                        <button>
-                            <span>추천 </span><br />
-                            <span>{postOne.likeCount}</span>
-                        </button>
-                    </div>
+                    <Recommend style={styles.recommendBox} like={postOne.likeCount} id={postOne._id}/>
                 </div>
             </div>
         </>

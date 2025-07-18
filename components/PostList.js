@@ -4,8 +4,8 @@ import Link from "next/link";
 import { connectDB } from "@/app/util/database";
 import cateKo from "@/app/util/category";
 import Nav from "@/components/Nav";
-
-
+import PostViewCount from "@/app/util/PostViewCount";
+import PostLikeCount from "@/app/util/PostLikeCount";
 const PostList = async () => {
 
     //DB 가져오기
@@ -60,8 +60,9 @@ const PostList = async () => {
                             <p className={styles.title}><span className={styles.cate}>{post.cate}</span> {post.title}</p>
                             <p className={styles.writer}>{post.writer}</p>
                             <p className={styles.date}>{post.date}</p>
-                            <p className={styles.view}>{post.view}</p>
-                            <p className={styles.likeCount}>{post.likeCount}</p>
+                            {/* <p className={styles.view}>{post.view}</p> */}
+                            <PostViewCount id={post._id} view={post.view} className={styles.view}/>
+                            <PostLikeCount id={post._id} like={post.likeCount} css={styles.likeCount} />
                         </div>
                     </Link>
                 )
