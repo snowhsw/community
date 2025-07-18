@@ -3,20 +3,13 @@
 import Link from "next/link"
 import styles from "./SideBox.module.css"
 import { useEffect, useState } from "react";
-
+import { useSelector } from "react-redux";
+import store from "@/store/store";
 const SideBox = () =>{
 
-    const [post, setPost] = useState([])
-    // const changeChk = JSON.parse(localStorage.getItem('recentPost'))
+    const post = useSelector(state => state.recentPost)
 
-    useEffect(()=>{
-        try {
-            const recentPost = JSON.parse(localStorage.getItem('recentPost')) || [];    
-            setPost(recentPost)
-        } catch (error) {
-            console.log("최근본 게시글 오류")
-        }
-    }, [])
+    console.log(post)
 
     return(
         <div className={styles.stickyBoxOuter}>

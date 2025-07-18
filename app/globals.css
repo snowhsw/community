@@ -39,3 +39,6 @@ html{
 button{
     cursor: pointer;
 }
+.Wrapper{
+    width: 100%;
+}

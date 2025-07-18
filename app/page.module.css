@@ -1,4 +1,4 @@
-.container{
+.main{
     max-width: 1280px;
     margin: auto;
     display: flex;
@@ -10,7 +10,7 @@
     box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
 }
 @media screen and (max-width: 1320px) {
-    .container{
+    .main{
         padding-left: 20px;
         padding-right: 20px;
     }

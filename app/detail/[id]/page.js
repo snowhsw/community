@@ -2,7 +2,8 @@ import { connectDB } from "@/app/util/database"
 import { ObjectId } from "mongodb";
 import styles from './page.module.css';
 import cateKo from "@/app/util/category";
-import RecentPost from "@/app/util/recentPost";
+import RecentPost from "@/app/util/RecentPost";
+import IncrementView from "@/app/util/incrementView";
 async function Detail({params}){
 
     const  { id } = await params
@@ -14,6 +15,7 @@ async function Detail({params}){
 
     return(
         <>
+        <IncrementView post={propsId}/>
         <RecentPost post={propsId}/>
         <div className={styles.PostBox}>
             <div className={styles.postInfo}>

@@ -4,8 +4,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 import SideBox from "@/components/SideBox";
-
-
+import ProviderCom from "@/components/Provider";
+import InitRecent from "./util/InitRecent";
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
@@ -26,16 +26,17 @@ export default function RootLayout({ children }) {
     return (
         <html lang="ko">
             <body className={`${geistSans.variable} ${geistMono.variable}`}>
-                <Header/>
-                    <main>
-                        <div className={styles.container}>
+                <ProviderCom>
+                    <InitRecent/>
+                    <Header />
+                        <main className={styles.main} >
                             <div className={styles.contentBox}>
                                 {children}
                             </div>
                             <SideBox />
-                        </div>
-                    </main>
-                <Footer/>
+                        </main>
+                    <Footer />
+                </ProviderCom>
             </body>
         </html>
     );
