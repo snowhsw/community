@@ -36,7 +36,8 @@ async function Detail({ params }) {
                         </p>
                         <div>
                             
-                            <span>조회수<ViewIncrease post={postOne}/></span> <span>작성일 {postOne.date}</span>
+                            <span className={styles.view}>조회수 <ViewIncrease post={postOne}/></span> 
+                            <span>작성일 {postOne.date}</span>
                         </div>
                     </div>
                 </div>

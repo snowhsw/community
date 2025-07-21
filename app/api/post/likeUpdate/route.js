@@ -23,7 +23,16 @@ export async function POST(req){
         return NextResponse.json(res.likeCount)
     }
     else{
-        return NextResponse.json({alreadyMessage: true});
+        const res = await db.collection('post').findOneAndUpdate(
+    
+            {_id: new ObjectId(body.id)},
+            { $inc: {likeCount: -1}},
+            { returnDocument: "after"}
+        )
+
+        await db.collection('recommendUser').deleteOne({postId: body.id, user: body.user})
+
+        return NextResponse.json(res.likeCount);
     }
 
 

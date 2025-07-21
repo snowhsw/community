@@ -6,11 +6,14 @@ import cateKo from "@/app/util/category";
 import Nav from "@/components/Nav";
 import PostViewCount from "@/app/util/PostViewCount";
 import PostLikeCount from "@/app/util/PostLikeCount";
-const PostList = async () => {
+const PostList = async ({postCate}) => {
+    
 
     //DB 가져오기
     const db = (await connectDB).db("community");
-    const result = await db.collection("post").find().toArray();
+    
+    const cateFilter = postCate?{cate: postCate}:{};
+    const result = await db.collection("post").find(cateFilter).toArray();
 
     // 최신순 정렬
     const sortPost = result.sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -38,8 +41,6 @@ const PostList = async () => {
         return {...post, date: viewDate, cate: cateKo[post.cate], _id: String(post._id)}
         
     })
-
-    
     
     return (
         <div className={styles.postListContainer}> 
@@ -53,6 +54,8 @@ const PostList = async () => {
                 <p className={styles.likeCount}>추천</p>
             </div>
             {   
+                formatDate.length === 0?
+                <h2 className={styles.noPost}>"게시글이 없습니다"</h2>:
                 formatDate.map((post, idx )=>
                     <Link href={`/detail/${post._id}`} className={styles.detailLink} key={post._id}>
                         <div className={styles.post}>
@@ -60,7 +63,6 @@ const PostList = async () => {
                             <p className={styles.title}><span className={styles.cate}>{post.cate}</span> {post.title}</p>
                             <p className={styles.writer}>{post.writer}</p>
                             <p className={styles.date}>{post.date}</p>
-                            {/* <p className={styles.view}>{post.view}</p> */}
                             <PostViewCount id={post._id} view={post.view} className={styles.view}/>
                             <PostLikeCount id={post._id} like={post.likeCount} css={styles.likeCount} />
                         </div>

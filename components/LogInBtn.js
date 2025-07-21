@@ -27,6 +27,9 @@ const Btn = ({ fn }) => {
                                 isManage&&
                                 <ul className={styles.userManage}>
                                     <li>
+                                        <Link href={"/write"}>글쓰기</Link>
+                                    </li>
+                                    <li>
                                         <Link href={"/mypage"}>마이페이지</Link>
                                     </li>
                                     <li>

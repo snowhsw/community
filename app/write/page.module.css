@@ -1,5 +1,44 @@
 #writeForm{
-    max-width: 1000px;
-    margin: auto;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 0.5rem 0.5rem 0 0;
+    /* padding: 1rem; */
+}
+#writeForm h1{
+    margin: 0;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+.outerBox{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
+.outerBox > select,
+.outerBox > input,
+.outerBox > textarea,
+.outerBox > button{
+    width: 100%;
+    padding: 0.5rem;
+    /* margin: 1rem; */
+    box-sizing: border-box;
+    border: 1px solid #bbb;
+    font-size: 1rem;
+}
+.outerBox > textarea{
+    height: 300px;
+    resize: none;
+}
+.outerBox > button{
+    background-color: rgb(61, 65, 77);
+    color: white;
+    padding: 1rem 0;
+    margin: 1rem 0;
+}
+.outerBox > button:active{
+    background-color: rgba(61, 65, 77, 0.7);
 }

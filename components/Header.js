@@ -8,7 +8,6 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 const Header = async () => {
     const session = await getServerSession(authOptions)
-    // console.log(session)
 
     return (
         <header className={styles.header}>

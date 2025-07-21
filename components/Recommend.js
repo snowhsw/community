@@ -24,16 +24,11 @@ const Recommend = ({ style, like, id, clickUser }) => {
                         )
                         .then(res => res.json())
                         .then(data => {
-                            if (data.alreadyMessage) {
-                                alert("이미 추천한 게시글 입니다.")
-                                console.log()
-                            }
-                            else {
-                                setLikeCount(data);
-                                dispatch(likeSyncing({ id: id, like: data }));
-                            }
+
+                            setLikeCount(data);
+                            dispatch(likeSyncing({ id: id, like: data }));
                         })
-                            .catch(() => console.log("에러입니다."))
+                        .catch(() => console.log("에러입니다."))
                         //로그인 안되어 있으면 경고창
                         : alert("로그인해")
 
