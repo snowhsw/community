@@ -1,0 +1,37 @@
+.commListOuter{
+    margin: 1rem 1rem 2rem 1rem;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    padding: 1rem 0;
+}
+.titBox{
+    /* overflow: hidden; */
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+.titTxt{
+    margin: 0;
+}
+.listBox{
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+.commInfo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #eee;
+    padding: 0.5rem 1rem;
+}
+.commInfo > p{
+    font-size: 1rem;
+}
+.commTxt{
+    padding: 1rem;
+}
+.noComment{
+    text-align: center;
+    color: grey;
+}

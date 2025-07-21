@@ -36,15 +36,31 @@ const likeCount = createSlice({
         }
     }
 })
+
+const commentUpdate = createSlice({
+    name:"commentUpdate",
+    initialState: [],
+    reducers:{
+        commUpdate(state, action){
+            console.log(action.payload)
+            return action.payload
+        }
+    }
+})
+
+
+
 const store = configureStore({
     reducer:{
         recentPost : recentPostSlice.reducer,
         viewCount: viewCount.reducer,
-        likeCount: likeCount.reducer
+        likeCount: likeCount.reducer,
+        commentUpdate: commentUpdate.reducer
     }
 })
 
 export const { setRecentPost } = recentPostSlice.actions;
 export const { viewSyncing } = viewCount.actions;
 export const { likeSyncing } = likeCount.actions;
+export const { commUpdate } = commentUpdate.actions;
 export default store;

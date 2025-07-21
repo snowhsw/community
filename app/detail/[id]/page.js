@@ -7,8 +7,10 @@ import cateKo from "@/app/util/category";
 import RecentPost from "@/app/util/RecentPost";
 import ViewIncrease from "@/components/ViewIncrease";
 import Recommend from "@/components/Recommend";
+import CommentInput from "@/components/CommentInput";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import CommentList from "@/components/CommentList";
 async function Detail({ params }) {
 
     const { id } = await params
@@ -23,8 +25,6 @@ async function Detail({ params }) {
     return (
         <>
             <RecentPost post={postOne} />
-
-
             <div className={styles.PostBox}>
                 <div className={styles.postInfo}>
                     <p className={styles.title}>
@@ -46,6 +46,14 @@ async function Detail({ params }) {
                         {postOne.content}
                     </p>
                     <Recommend style={styles.recommendBox} like={postOne.likeCount} id={postOne._id} clickUser={session}/>
+                </div>
+                <div className={styles.commentBox}>
+                    {
+                        session?
+                        <CommentInput userInfo={session} postId={postOne._id}/>:
+                        <p className={styles.loginTxt}>로그인 후 댓글작성이 가능합니다.</p>
+                    }
+                    <CommentList parentId={postOne._id}/>
                 </div>
             </div>
         </>

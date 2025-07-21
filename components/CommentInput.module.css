@@ -1,0 +1,44 @@
+.commentForm{
+    margin: 2rem 1rem;
+    border: 1px solid #bbb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+.commentInfo{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.formName{
+    padding: 0.5rem;
+}
+.txtArea{
+    width: 100%;
+    height: 100px;
+    resize: none;
+    box-sizing: border-box;
+    margin: auto;
+    display: block;
+    border: none;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+.txtArea:focus{
+    outline: none;
+}
+.submitBtn{
+    width: 100%;
+    padding: 0.6rem 0;
+    color: white;
+    background-color: rgb(61, 65, 77);
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 100;
+}
+.submitBtn:active{
+    background-color: rgba(61, 65, 77, 0.7);
+}
