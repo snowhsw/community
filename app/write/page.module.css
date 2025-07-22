@@ -17,7 +17,10 @@
     flex-direction: column;
     gap: 0.5rem;
 }
-
+.error{
+    text-align: center;
+    line-height: 450px;
+}
 .outerBox > select,
 .outerBox > input,
 .outerBox > textarea,

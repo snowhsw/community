@@ -57,6 +57,13 @@
 .recommendBox > button > span:nth-child(1){
     color: white;
 }
+.btnOuter{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+    margin-top: 1rem;
+}
 .view{
     margin-right: 0.5rem;
 }

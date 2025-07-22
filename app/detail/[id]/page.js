@@ -1,16 +1,16 @@
-
-
 import { connectDB } from "@/app/util/database"
 import { ObjectId } from "mongodb";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+
 import styles from './page.module.css';
 import cateKo from "@/app/util/category";
 import RecentPost from "@/app/util/RecentPost";
 import ViewIncrease from "@/components/ViewIncrease";
 import Recommend from "@/components/Recommend";
 import CommentInput from "@/components/CommentInput";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import CommentList from "@/components/CommentList";
+import DetailPostBtn from "@/components/DetailPostBtn";
 async function Detail({ params }) {
 
     const { id } = await params
@@ -46,6 +46,10 @@ async function Detail({ params }) {
                         {postOne.content}
                     </p>
                     <Recommend style={styles.recommendBox} like={postOne.likeCount} id={postOne._id} clickUser={session}/>
+                    <div className={styles.btnOuter}>
+                        <DetailPostBtn postInfo={postOne} session={session} btnName="delete"/>
+                        <DetailPostBtn postInfo={postOne} session={session} btnName="edit"/>
+                    </div>
                 </div>
                 <div className={styles.commentBox}>
                     {

@@ -9,6 +9,7 @@
     box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
     width: calc(80% - 0.5rem);
     border-radius: 0.5rem;
+    min-height: 450px;
     overflow: hidden;
     background-color: white;
 }

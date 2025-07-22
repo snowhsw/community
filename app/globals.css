@@ -1,6 +1,7 @@
 body{
     margin: 0;
     background-color: #eee;
+    overflow-y: scroll;
 }
 ul{
     margin: 0;

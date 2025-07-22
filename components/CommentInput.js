@@ -1,7 +1,7 @@
 'use client'
 
 import styles from "./CommentInput.module.css"
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { commUpdate } from "@/store/store";
 const CommentInput = ({ userInfo, postId }) => {
@@ -13,6 +13,7 @@ const CommentInput = ({ userInfo, postId }) => {
         commTxt:""
     })
 
+    const commentRef = useRef(null);
     const dispatch = useDispatch();
 
     return (
@@ -24,10 +25,11 @@ const CommentInput = ({ userInfo, postId }) => {
         >
             <p className={styles.formName}>댓글작성</p>
 
-            <textarea
+            <input
                 type="text"
                 className={styles.txtArea}
                 value={comment.commTxt}
+                ref={commentRef}
                 onChange={(e) => setComment({...comment, commTxt: e.target.value})}
             />
             <input
@@ -35,17 +37,23 @@ const CommentInput = ({ userInfo, postId }) => {
                 className={styles.submitBtn}
                 value="댓글등록"
                 onClick={(e) => {
-                    fetch('/api/post/insertComment',{
-                        method:"POST",
-                        body: JSON.stringify({commInfo: comment}),
-                        headers: {"Content-Type": "application/json"}
-                    })
-                    .then(res => res.json())
-                    .then(date => {
-                        setComment({...comment, commTxt: ""})
-                        dispatch(commUpdate(date.result))
-                    })
-                    .catch(()=> console.log("에러"))
+                    if(comment.commTxt.replace(/\s/g, '').length >= 5){
+                        fetch('/api/post/insertComment',{
+                            method:"POST",
+                            body: JSON.stringify({commInfo: comment}),
+                            headers: {"Content-Type": "application/json"}
+                        })
+                        .then(res => res.json())
+                        .then(date => {
+                            setComment({...comment, commTxt: ""})
+                            dispatch(commUpdate(date.result))
+                        })
+                        .catch(()=> console.log("에러"))
+                    }
+                    else{
+                        alert("댓글은 공백 제외 5글자 이상입니다.");
+                        commentRef.current.focus();
+                    }
                 }}
             />
 

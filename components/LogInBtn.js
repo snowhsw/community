@@ -16,31 +16,30 @@ const Btn = ({ fn }) => {
                         onClick={() => signIn()}
                     >
                     </button> :
-                    <>
-                        <button 
-                            className={styles.btn}
-                            onClick={()=>{
-                                setIsManage(!isManage)
-                            }}
-                        >
-                            {
-                                isManage&&
-                                <ul className={styles.userManage}>
-                                    <li>
-                                        <Link href={"/write"}>글쓰기</Link>
-                                    </li>
-                                    <li>
-                                        <Link href={"/mypage"}>마이페이지</Link>
-                                    </li>
-                                    <li>
-                                        <button onClick={() => signOut({callbackUrl: "/"})}>
-                                            로그아웃
-                                        </button>
-                                    </li>
-                                </ul>
-                            }
-                        </button>
-                    </>
+
+                    <div
+                        className={styles.btn}
+                        onClick={() => {
+                            setIsManage(!isManage)
+                        }}
+                    >
+                        {
+                            isManage &&
+                            <ul className={styles.userManage}>
+                                <li>
+                                    <Link href={"/write"}>글쓰기</Link>
+                                </li>
+                                <li>
+                                    <Link href={"/mypage"}>마이페이지</Link>
+                                </li>
+                                <li>
+                                    <button onClick={() => signOut({ callbackUrl: "/" })}>
+                                        로그아웃
+                                    </button>
+                                </li>
+                            </ul>
+                        }
+                    </div>
             }
         </>
     )

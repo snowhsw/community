@@ -19,10 +19,9 @@ const CommentList = ({parentId}) =>{
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            setCommList(data.res)
+            setCommList(data.res.reverse())
         })
-    },[])
+    },[list])
 
     return(
         <div className={styles.commListOuter}>
@@ -30,7 +29,7 @@ const CommentList = ({parentId}) =>{
                 <h3 className={styles.titTxt}>댓글 목록</h3>
             </div>
             {
-                // list.length !== 0?
+                connList.length !== 0?
                 connList.map(comm =>{
                     return(
                         <div key={comm._id.toString()} className={styles.listBox}>
@@ -44,7 +43,7 @@ const CommentList = ({parentId}) =>{
                         </div>
                     )
                 })
-                // :<p className={styles.noComment}>등록된 댓글이 없습니다.</p>
+                :<p className={styles.noComment}>등록된 댓글이 없습니다.</p>
             }
         </div>
     )

@@ -11,6 +11,7 @@
     width: 25px;
     height: 25px;
     position: relative;
+    cursor: pointer;
 }
 .userManage{
     position: absolute;
@@ -33,6 +34,7 @@
 .userManage > li > a{
     display: block;
     padding: 0.5rem 2rem;
+    text-align: center;
 }
 .userManage > li > button{
     width: 100%;
