@@ -10,7 +10,17 @@
     width: 100%;
     padding: 1rem;
 }
+.nickName,
+.email{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
 
+.nickName span,
+.email span{
+    font-size: 1rem;
+    margin: 0rem 1rem;
+}
 .boxTitle {
     font-size: 1.1rem;
     font-weight: 600;

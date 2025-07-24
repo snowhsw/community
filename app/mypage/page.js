@@ -26,9 +26,22 @@ const MyPage = async () => {
             {
                 myInfo ?
                     <div className={styles.myPageBox}>
-                        <p>{myInfo.name}</p>
-                        <p>{myInfo.email}</p>
-                    
+                        <div>
+                            <div>
+                                <span className={styles.nickName}>
+                                    <span>사용자명: </span>
+                                    {myInfo.name}
+                                </span>
+                                <button> 사용자명 변경하기</button>
+                            </div>
+                            <p>*초기 사용자명은 로그인 계정의 이름입니다.</p>
+                        </div>
+                        <div>
+                            <p className={styles.email}>
+                                <span>이메일: </span>
+                                {myInfo.email}
+                            </p>
+                        </div>
                         <div className={styles.myBox}>
                             <p className={styles.boxTitle}>최근 작성글</p>
                             {myRecentPost.map(post => {
