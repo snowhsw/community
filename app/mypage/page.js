@@ -4,6 +4,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]"
 import styles from "./page.module.css"
 import Link from "next/link"
 import cateKo from "../util/category"
+import { ObjectId } from "mongodb"
 const MyPage = async () => {
     const session = await getServerSession(authOptions)
     const db = (await connectDB).db("community")
@@ -14,8 +15,12 @@ const MyPage = async () => {
     const myRecentPost = myPost.reverse().slice(0, 5);
     const myRecentComment = myComment.reverse().slice(0, 5);
 
-    console.log(session.user.eamil)
+    const objectIds = myRecentComment.map(comm => new ObjectId(comm.parent));
+    const myCommentPost = await db.collection('post').find({_id: { $in: objectIds } }).toArray();
+    
     const myInfo = session ? session.user : null;
+    
+    
     return (
         <>
             {
@@ -43,10 +48,16 @@ const MyPage = async () => {
 
                         <div className={styles.myBox}>
                             <p className={styles.boxTitle}>최근 작성 댓글</p>
-                            {myRecentComment.map(comment => {
+                            {myRecentComment.map(comment=> {
+
                                 return (
                                     <Link href={`/detail/${comment.parent}`} key={comment._id.toString()} className={styles.myCommentLink}>
                                         <p>
+                                            <span>
+                                                {
+                                                    // 댓글 리스트 카테고리 맞추기
+                                                }
+                                            </span>
                                             {comment.commTxt}
                                         </p>
                                         <p>
