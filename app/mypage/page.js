@@ -39,7 +39,6 @@ const MyPage = async () => {
                                 </span>
                                 <button> 사용자명 변경하기</button>
                             </div>
-                            <p>*초기 사용자명은 로그인 계정의 이름입니다.</p>
                         </div>
                         <div>
                             <p className={styles.email}>

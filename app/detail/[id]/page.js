@@ -21,7 +21,7 @@ async function Detail({ params }) {
 
     const session = await getServerSession(authOptions);
     
-
+    const user = session?session.user.email:null;
     return (
         <>
             <RecentPost post={postOne} />
@@ -57,7 +57,7 @@ async function Detail({ params }) {
                         <CommentInput userInfo={session} postId={postOne._id}/>:
                         <p className={styles.loginTxt}>로그인 후 댓글작성이 가능합니다.</p>
                     }
-                    <CommentList parentId={postOne._id}/>
+                    <CommentList parentId={postOne._id} user={user}/>
                 </div>
             </div>
         </>

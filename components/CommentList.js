@@ -2,16 +2,15 @@
 
 import styles from "./CommentList.module.css"
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { commUpdate } from "@/store/store";
 import { useEffect, useState } from "react";
-const CommentList = ({parentId}) =>{
+import CommentEdit from "./CommentEdit";
+const CommentList = ({parentId, user}) =>{
     
     
     const list = useSelector(state => state.commentUpdate)
-    // const result = useSelector(state => state)
     
-    const [connList, setCommList] = useState(list);
+    const [commList, setCommList] = useState(list);
+
 
     useEffect(()=>{
         fetch(`/api/get/getComment?parent=${parentId}`,{
@@ -23,23 +22,29 @@ const CommentList = ({parentId}) =>{
         })
     },[list])
 
+
     return(
         <div className={styles.commListOuter}>
             <div className={styles.titBox}>
                 <h3 className={styles.titTxt}>댓글 목록</h3>
             </div>
             {
-                connList.length !== 0?
-                connList.map(comm =>{
+                commList.length !== 0?
+                commList.map(comm =>{
                     return(
                         <div key={comm._id.toString()} className={styles.listBox}>
                             <div className={styles.commInfo}>
                                 <p>작성자: {comm.commName}</p>
                                 <p>작성일: {comm.commTime}</p>
                             </div>
-                            <p className={styles.commTxt}>
-                                {comm.commTxt}
-                            </p>
+                            <div className={styles.commentContentBox}>
+                                <CommentEdit 
+                                    txt={comm.commTxt}
+                                    setCommList={setCommList}
+                                    comm={comm}
+                                    user={user}
+                                />
+                            </div>
                         </div>
                     )
                 })
