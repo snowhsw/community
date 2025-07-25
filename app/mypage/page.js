@@ -20,7 +20,12 @@ const MyPage = async () => {
     
     const myInfo = session ? session.user : null;
     
-    
+    const commCateFind = (commParent) =>{
+
+        const result = myCommentPost.find(post => post._id.toString()===commParent)
+        console.log(result)
+        return result.cate
+    }
     return (
         <>
             {
@@ -69,6 +74,7 @@ const MyPage = async () => {
                                             <span>
                                                 {
                                                     // 댓글 리스트 카테고리 맞추기
+                                                    cateKo[commCateFind(comment.parent)]
                                                 }
                                             </span>
                                             {comment.commTxt}
