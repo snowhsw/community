@@ -2,6 +2,7 @@
 
 import styles from "./Search.module.css"
 import { useState } from "react"
+import { useDispatch } from "react-redux"
 const Search = () =>{
 
     const [searchCondition, setSearchCondition] = useState({cate:"title", keyword: ""})
@@ -12,6 +13,12 @@ const Search = () =>{
             className={styles.searchWrap}
             onSubmit={e => {
                 e.preventDefault()
+
+                fetch(`/api/get/getSearchResult?cate=${searchCondition.cate}&keyword=${searchCondition.keyword}`,{method:"GET"})
+                .then(res => res.json())
+                .then(result => console.log(result.searchResult))
+                .catch(()=> console.log("에러"))
+
                 setSearchCondition({...searchCondition, keyword: ""})
             }}
         >
@@ -34,12 +41,6 @@ const Search = () =>{
             <button 
                 type="submit"
                 className={`${styles.submitBtn} btn`}
-                onClick={()=>{
-                    fetch(`/api/get/getSearchResult?cate=${searchCondition.cate}&keyword=${searchCondition.keyword}`,{method:"GET"})
-                    .then(res => res.json())
-                    .then(result => console.log(result))
-                    .catch(()=> console.log("에러"))
-                }}
             >
             </button>
         </form>
