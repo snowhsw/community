@@ -26,6 +26,9 @@
     padding-left: 1rem;
     font-size: 1rem;
 }
+.searchCondition > option{
+    bottom: 1px solid red;
+}
 .searchInput:focus,
 .searchCondition:focus{
     outline: none;
