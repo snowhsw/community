@@ -6,14 +6,28 @@ import cateKo from "@/app/util/category";
 import Nav from "@/components/Nav";
 import PostViewCount from "@/app/util/PostViewCount";
 import PostLikeCount from "@/app/util/PostLikeCount";
-const PostList = async ({postCate}) => {
+const PostList = async ({postCate, serachCate}) => {
+    
     
 
     //DB 가져오기
     const db = (await connectDB).db("community");
     
+    // let cateFilter;
+
+    //검색 조건 없으면 
+    // if(serachCate){
+        
+    // }
+    // //검색 조건 있으면
+    // else{
+    //     // console.log(serachCate.cate)
+    //     // searchQuery = { [cateFilter.cate]: { $regex: cateFilter.keyword, $options: "i" }}
+    // }
+    
     const cateFilter = postCate?{cate: postCate}:{};
     const result = await db.collection("post").find(cateFilter).toArray();
+    
 
     // 최신순 정렬
     const sortPost = result.sort((a, b) => new Date(b.date) - new Date(a.date))

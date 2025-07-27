@@ -3,10 +3,12 @@
 import styles from "./Search.module.css"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
+import { useRouter } from "next/navigation"
 const Search = () =>{
 
     const [searchCondition, setSearchCondition] = useState({cate:"title", keyword: ""})
-    console.log(searchCondition.cate)
+    const router = useRouter();
+    // console.log(searchCondition.cate)
 
     return(
         <form 
@@ -14,12 +16,15 @@ const Search = () =>{
             onSubmit={e => {
                 e.preventDefault()
 
-                fetch(`/api/get/getSearchResult?cate=${searchCondition.cate}&keyword=${searchCondition.keyword}`,{method:"GET"})
-                .then(res => res.json())
-                .then(result => console.log(result.searchResult))
-                .catch(()=> console.log("에러"))
+                // fetch(`/api/get/getSearchResult?cate=${searchCondition.cate}&keyword=${searchCondition.keyword}`,{method:"GET"})
+                // .then(res => res.json())
+                // .then(result => console.log(result.searchResult))
+                // .catch(()=> console.log("에러"))
+                
+                // setSearchCondition({...searchCondition, keyword: ""})
 
-                setSearchCondition({...searchCondition, keyword: ""})
+                const searchResult = `/search?cate=${searchCondition.cate}&keyword=${searchCondition.keyword}`
+                router.push(searchResult)
             }}
         >
             <select 
