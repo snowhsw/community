@@ -1,13 +1,10 @@
-
-
 import Link from "next/link"
 import styles from "./SideBox.module.css"
 import { useSelector } from "react-redux";
 import RecentPostBox from "./RecentPostBox";
 import TopPostBox  from "./TopPostBox";
+
 const SideBox = () =>{
-
-
 
 
     return(

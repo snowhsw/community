@@ -32,3 +32,8 @@
 .postLink:hover{
     background-color: #ddd;
 }
+@media screen and (max-width:1024px) {
+    .stickyBoxOuter{
+        width: 100%;
+    }
+}

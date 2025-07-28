@@ -13,20 +13,24 @@ const PostList = async ({postCate, serachCate}) => {
     //DB 가져오기
     const db = (await connectDB).db("community");
     
-    // let cateFilter;
+    const searchCondition = serachCate?serachCate.cate:null; 
 
-    //검색 조건 없으면 
-    // if(serachCate){
-        
-    // }
-    // //검색 조건 있으면
-    // else{
-    //     // console.log(serachCate.cate)
-    //     // searchQuery = { [cateFilter.cate]: { $regex: cateFilter.keyword, $options: "i" }}
-    // }
+    let filter;
+
+    //검색 조건 있으면
+    if(searchCondition){
+        console.log("검색조건 있어요")
+        filter = { [serachCate.cate]: { $regex: serachCate.keyword, $options: "i" }}
+
+    }
+    //검색 조건 없으면
+    else{
+        console.log("검색조건 없어요")
+        filter = postCate?{cate: postCate}:{};
+        console.log(filter)
+    }
     
-    const cateFilter = postCate?{cate: postCate}:{};
-    const result = await db.collection("post").find(cateFilter).toArray();
+    const result = await db.collection("post").find(filter).toArray();
     
 
     // 최신순 정렬

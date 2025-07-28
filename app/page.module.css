@@ -19,3 +19,12 @@
         padding-right: 20px;
     }
 }
+
+@media screen and (max-width:1024px) {
+    .main{
+        flex-direction: column;
+    }
+    .contentBox{
+        width: 100%;
+    }
+}

@@ -24,6 +24,7 @@ const Search = () =>{
                 // setSearchCondition({...searchCondition, keyword: ""})
 
                 const searchResult = `/search?cate=${searchCondition.cate}&keyword=${searchCondition.keyword}`
+                setSearchCondition({...searchCondition, keyword: ""})
                 router.push(searchResult)
             }}
         >

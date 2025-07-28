@@ -95,7 +95,6 @@ const Write = ({ session, page, postInfo }) => {
                     <option value="info">정보</option>
                     <option value="share">나눔</option>
                     <option value="boast">자랑</option>
-                    <option value="adopt">입양</option>
                 </select>
             </div>
             <div className={styles.outerBox}>
