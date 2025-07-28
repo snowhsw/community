@@ -79,3 +79,24 @@
     /* background-color: #42464F;
     vertical-align: middle; */
 }
+@media screen and (max-width: 768px) {
+    .post{
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .idx{
+        display: none;
+    }
+    .title{
+        width: 100%;
+    }
+    .post p{
+        text-align: left;
+    }
+    .post > div{
+        display: flex;
+    }
+    .post > div > p{
+        text-align: right;
+    }
+}

@@ -80,9 +80,11 @@ const PostList = async ({postCate, serachCate}) => {
                             <p className={styles.idx}>{formatDate.length - idx}</p>
                             <p className={styles.title}><span className={styles.cate}>{post.cate}</span> {post.title}</p>
                             <p className={styles.writer}>{post.writer}</p>
-                            <p className={styles.date}>{post.date}</p>
-                            <PostViewCount id={post._id} view={post.view} className={styles.view}/>
-                            <PostLikeCount id={post._id} like={post.likeCount} css={styles.likeCount} />
+                            <div>
+                                <p className={styles.date}>{post.date}</p>
+                                <PostViewCount id={post._id} view={post.view} className={styles.view}/>
+                                <PostLikeCount id={post._id} like={post.likeCount} css={styles.likeCount} />
+                            </div>
                         </div>
                     </Link>
                 )
