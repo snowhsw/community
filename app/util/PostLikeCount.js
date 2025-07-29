@@ -9,6 +9,7 @@ const PostLikeCount = ({ id, like, css }) => {
 
     return (
         <p className={css}>
+            <span className="mo_block">추천: </span>
             {
                 currentLike.id === id ?
                 currentLike.like:

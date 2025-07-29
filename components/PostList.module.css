@@ -22,6 +22,9 @@
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid #ddd;
 }
+.post div{
+    display: flex;
+}
 .post:hover{
     background-color: #ddd;
 }
@@ -89,6 +92,7 @@
     }
     .title{
         width: 100%;
+        /* margin-bottom: 0.5rem; */
     }
     .post p{
         text-align: left;
@@ -98,5 +102,27 @@
     }
     .post > div > p{
         text-align: right;
+        white-space: nowrap;
+    }
+    .postHead{
+        display: none;
+    } 
+    
+    .writer,
+    .date,
+    .view,
+    .likeCount{
+        width: auto;
+        display: flex;
+    }
+    .writer{
+        padding-left: 0.1rem;
+    }
+    .view,
+    .likeCount{
+        margin-left: 0.5rem;
+    }
+    .mo_block{
+        display: block;
     }
 }

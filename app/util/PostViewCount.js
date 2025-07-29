@@ -6,6 +6,7 @@ const PostViewCount = ({id, view, className}) =>{
     // console.log(currentView)
     return(
         <p className={className}>
+            <span className="mo_block">조회: </span>
             {
                 currentView.id === id?
                 currentView.view:
